@@ -4,7 +4,7 @@ type PropsType = {
     callback: () => void
 }
 
-export const Button = (props: PropsType) => {
+export const Button: React.FC<PropsType> = (props) => {
     const onClickHandler = () => {
         props.callback()
     }

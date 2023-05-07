@@ -1,14 +1,15 @@
-import {ChangeEvent, KeyboardEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 
 type PropsType = {
     className?: string
     title: string
     callbackOnChange: (title: string) => void
     callbackOnKeyDown: () => void
+    // callbackOnBlur?: () => void
     setError: (error: string | null) => void
 }
 
-export const Input = (props: PropsType) => {
+export const Input: React.FC<PropsType> = (props) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.callbackOnChange(e.currentTarget.value)
@@ -20,6 +21,10 @@ export const Input = (props: PropsType) => {
             props.callbackOnKeyDown()
         }
     }
+    //
+    // const onBlurHandler = () => {
+    //     props.callbackOnBlur()
+    // }
 
     return (
         <input
@@ -27,7 +32,7 @@ export const Input = (props: PropsType) => {
             value={props.title}
             onChange={onChangeHandler}
             onKeyDown={onKeyDownHandler}
-            type="text"
+            // onBlur={onBlurHandler}
         />
     )
 }
